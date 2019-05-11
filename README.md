@@ -2,6 +2,30 @@ Server Refresh
 ---
 The server refresh module of Titan. All inclusive server restart features in one plugin, ensures your server is always refreshed and prepared for the next load.
 
+### Features
+---
+- Set an Individual Custom Restart Message for
+  - Map Restart
+  - Server Restart
+  
+- Set Restart Map or Server Individually for
+  - Empty
+  - Every Hour
+  - Every Day
+  - Every Week
+  
+- Add a Wait Time before Restarting for (only useful for notifying players about a restart, if player counts are ignored then this is useless)
+  - Empty
+  - Every Hour
+  - Every Day
+  - Every Week
+  
+- Set Ignore Player Counts for
+  - Empty
+  - Every Hour
+  - Every Day
+  - Every Week
+  
 ### ConVars
 ---
 Note: The wait time ConVars are completely useless if you ignore player counts.
