@@ -323,20 +323,33 @@ public Action Timer_WeeklyRestart(Handle hTimer)
 // then they would know a server restart is coming
 public void ExecuteRestart(int iType, int iTime)
 {
+	char sTime[32];
+	IntToString(iTime, sTime, sizeof(sTime));
+	Format(sTime, sizeof(sTime), "%s seconds", sTime);
+	
+	char sFormat[256];
 	// if it is a map restart then print map restart message
 	if (iType == 0)
 	{
+		// replace {0} with the time left to restart
+		strcopy(sFormat, sizeof(sFormat), g_sRestartMapMessage);
+		ReplaceString(sFormat, sizeof(sFormat), "{0}", sTime);
+		
 		// notify the server
-		PrintCenterTextAll(g_sRestartMapMessage);
-		PrintToChatAll(g_sRestartMapMessage);
+		PrintCenterTextAll(sFormat);
+		PrintToChatAll(sFormat);
 	}
 	
 	// if it is a server restart then print server restart message
 	else
 	{
+		// replace {0} with the time left to restart
+		strcopy(sFormat, sizeof(sFormat), g_sRestartMessage);
+		ReplaceString(sFormat, sizeof(sFormat), "{0}", sTime);
+		
 		// notify the server
-		PrintCenterTextAll(g_sRestartMessage);
-		PrintToChatAll(g_sRestartMessage);
+		PrintCenterTextAll(sFormat);
+		PrintToChatAll(sFormat);
 	}
 	
 	// execute the restart function after wait time
