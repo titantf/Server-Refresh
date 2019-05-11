@@ -61,7 +61,7 @@ public void OnPluginStart()
 	cvEmptyRestartWait = CreateConVar("sm_restart_empty_wait", "30", "The amount of time to wait after a server is emptied before restarting in seconds (Default = 30)");
 	g_iEmptyRestartWait = cvEmptyRestartWait.IntValue;
 	
-	cvEmptyRestartType = CreateConVar("sm_restart_empty_type", "0", "The type of restart when empty (0 = Map, 1 = Server, Default = 1)", _, true, 0.0, true, 1.0);
+	cvEmptyRestartType = CreateConVar("sm_restart_empty_type", "0", "The type of restart when empty (0 = Map, 1 = Server, Default = 0)", _, true, 0.0, true, 1.0);
 	g_iEmptyRestartType = cvEmptyRestartType.IntValue;
 	
 	cvHourlyRestart = CreateConVar("sm_restart_hourly", "1", "Enable hourly restart (0 = No, 1 = Yes, Default = 1)", _, true, 0.0, true, 1.0);
@@ -73,10 +73,10 @@ public void OnPluginStart()
 	cvHourlyRestartTime = CreateConVar("sm_restart_hourly_time", "00", "At what minute should the restart happen in 2 digits (Minimum = 00, Maximum = 60, Default = 00)");
 	cvHourlyRestartTime.GetString(g_sHourlyRestartTime, sizeof(g_sHourlyRestartTime));
 	
-	cvHourlyRestartType = CreateConVar("sm_restart_hourly_type", "0", "The type of restart done hourly (0 = Map, 1 = Server, Default = 1)", _, true, 0.0, true, 1.0);
+	cvHourlyRestartType = CreateConVar("sm_restart_hourly_type", "0", "The type of restart done hourly (0 = Map, 1 = Server, Default = 0)", _, true, 0.0, true, 1.0);
 	g_iHourlyRestartType = cvHourlyRestartType.IntValue;
 	
-	cvHourlyRestartIgnorePlayers = CreateConVar("sm_restart_hourly_ignoreplayers", "0", "Ignore players on hourly restart (0 = No, 1 = Yes, Default = 1)", _, true, 0.0, true, 1.0);
+	cvHourlyRestartIgnorePlayers = CreateConVar("sm_restart_hourly_ignoreplayers", "0", "Ignore players on hourly restart (0 = No, 1 = Yes, Default = 0)", _, true, 0.0, true, 1.0);
 	g_iHourlyRestartIgnorePlayers = cvHourlyRestartIgnorePlayers.IntValue;
 	
 	cvDailyRestart = CreateConVar("sm_restart_daily", "1", "Enable daily restart (0 = No, 1 = Yes, Default = 1)", _, true, 0.0, true, 1.0);
@@ -88,10 +88,10 @@ public void OnPluginStart()
 	cvDailyRestartTime = CreateConVar("sm_restart_daily_time", "0500", "At what hour and minute should the restart happen in 4 digits (Minimum = 0000, Maximum = 2459, Default = 0500)");
 	cvDailyRestartTime.GetString(g_sDailyRestartTime, sizeof(g_sDailyRestartTime));
 	
-	cvDailyRestartType = CreateConVar("sm_restart_daily_type", "0", "The type of restart done daily (0 = Map, 1 = Server, Default = 1)", _, true, 0.0, true, 1.0);
+	cvDailyRestartType = CreateConVar("sm_restart_daily_type", "0", "The type of restart done daily (0 = Map, 1 = Server, Default = 0)", _, true, 0.0, true, 1.0);
 	g_iDailyRestartType = cvDailyRestartType.IntValue;
 	
-	cvDailyRestartIgnorePlayers = CreateConVar("sm_restart_daily_ignoreplayers", "0", "Ignore players on daily restart (0 = No, 1 = Yes, Default = 1)", _, true, 0.0, true, 1.0);
+	cvDailyRestartIgnorePlayers = CreateConVar("sm_restart_daily_ignoreplayers", "0", "Ignore players on daily restart (0 = No, 1 = Yes, Default = 0)", _, true, 0.0, true, 1.0);
 	g_iDailyRestartIgnorePlayers = cvDailyRestartIgnorePlayers.IntValue;
 	
 	cvWeeklyRestart = CreateConVar("sm_restart_weekly", "1", "Enable weekly restart (0 = No, 1 = Yes, Default = 1)", _, true, 0.0, true, 1.0);
@@ -100,14 +100,14 @@ public void OnPluginStart()
 	cvWeeklyRestartWait = CreateConVar("sm_restart_weekly_wait", "30", "The amount of time to wait after an weekly restart is here in seconds (Default = 30)");
 	g_iWeeklyRestartWait = cvWeeklyRestartWait.IntValue;
 	
-	cvWeeklyRestartTime = CreateConVar("sm_restart_weekly_time", "Sun", "On which day should the restart happen in 3 letters (Default = Sun)");
+	cvWeeklyRestartTime = CreateConVar("sm_restart_weekly_time", "sun", "On which day should the restart happen in 3 letters (Default = sun)");
 	cvWeeklyRestartTime.GetString(g_sWeeklyRestartTime, sizeof(g_sWeeklyRestartTime));
 	strcopy(g_sWeeklyRestartTime, sizeof(g_sWeeklyRestartTime), StringToLower(g_sWeeklyRestartTime));
 	
-	cvWeeklyRestartType = CreateConVar("sm_restart_weekly_type", "0", "The type of restart done weekly (0 = Map, 1 = Server, Default = 1)", _, true, 0.0, true, 1.0);
+	cvWeeklyRestartType = CreateConVar("sm_restart_weekly_type", "1", "The type of restart done weekly (0 = Map, 1 = Server, Default = 1)", _, true, 0.0, true, 1.0);
 	g_iWeeklyRestartType = cvWeeklyRestartType.IntValue;
 	
-	cvWeeklyRestartIgnorePlayers = CreateConVar("sm_restart_weekly_ignoreplayers", "0", "Ignore players on weekly restart (0 = No, 1 = Yes, Default = 1)", _, true, 0.0, true, 1.0);
+	cvWeeklyRestartIgnorePlayers = CreateConVar("sm_restart_weekly_ignoreplayers", "0", "Ignore players on weekly restart (0 = No, 1 = Yes, Default = 0)", _, true, 0.0, true, 1.0);
 	g_iWeeklyRestartIgnorePlayers = cvWeeklyRestartIgnorePlayers.IntValue;
 	
 	// hooking cvar changes
