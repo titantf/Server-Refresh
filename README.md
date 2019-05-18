@@ -97,8 +97,12 @@ The server refresh module of Titan. All inclusive server restart features in one
 - **sm_restart_weekly_wait** - The amount of time to wait after an weekly restart is here in seconds
   - Default: 30
   
-- **sm_restart_weekly_time** - On which day should the restart happen in 3 letters
+- **sm_restart_weekly_day** - On which day should the restart happen in 3 letters
   - Default: "sun"
+  
+- **sm_restart_weekly_time** - At what hour and minute should the restart happen in 4 digits
+  - Minimum = 0000; Maximum = 2459
+  - Default: "0500"
   
 - **sm_restart_weekly_type** - The type of restart done weekly
   - 0 = Map; 1 = Server
