@@ -16,6 +16,7 @@ ConVar
 	cvDailyRestartIgnorePlayers,
 	cvWeeklyRestart,
 	cvWeeklyRestartWait,
+	cvWeeklyRestartDay,
 	cvWeeklyRestartTime,
 	cvWeeklyRestartType,
 	cvWeeklyRestartIgnorePlayers;
@@ -40,6 +41,7 @@ int
 char
 	g_sHourlyRestartTime[32],
 	g_sDailyRestartTime[32],
+	g_sWeeklyRestartDay[32],
 	g_sWeeklyRestartTime[32],
 	g_sRestartMessage[128],
 	g_sRestartMapMessage[128];
@@ -100,9 +102,12 @@ public void OnPluginStart()
 	cvWeeklyRestartWait = CreateConVar("sm_restart_weekly_wait", "30", "The amount of time to wait after an weekly restart is here in seconds (Default = 30)");
 	g_iWeeklyRestartWait = cvWeeklyRestartWait.IntValue;
 	
-	cvWeeklyRestartTime = CreateConVar("sm_restart_weekly_time", "sun", "On which day should the restart happen in 3 letters (Default = sun)");
+	cvWeeklyRestartDay = CreateConVar("sm_restart_weekly_day", "sun", "On which day should the restart happen in 3 letters (Default = sun)");
+	cvWeeklyRestartDay.GetString(g_sWeeklyRestartDay, sizeof(g_sWeeklyRestartDay));
+	strcopy(g_sWeeklyRestartDay, sizeof(g_sWeeklyRestartDay), StringToLower(g_sWeeklyRestartDay));
+	
+	cvWeeklyRestartTime = CreateConVar("sm_restart_weekly_time", "0500", "At what hour and minute should the restart happen in 4 digits (Minimum = 0000, Maximum = 2459, Default = 0500)");
 	cvWeeklyRestartTime.GetString(g_sWeeklyRestartTime, sizeof(g_sWeeklyRestartTime));
-	strcopy(g_sWeeklyRestartTime, sizeof(g_sWeeklyRestartTime), StringToLower(g_sWeeklyRestartTime));
 	
 	cvWeeklyRestartType = CreateConVar("sm_restart_weekly_type", "1", "The type of restart done weekly (0 = Map, 1 = Server, Default = 1)", _, true, 0.0, true, 1.0);
 	g_iWeeklyRestartType = cvWeeklyRestartType.IntValue;
@@ -128,6 +133,7 @@ public void OnPluginStart()
 	cvDailyRestartIgnorePlayers.AddChangeHook(OnCvarChanged);
 	cvWeeklyRestart.AddChangeHook(OnCvarChanged);
 	cvWeeklyRestartWait.AddChangeHook(OnCvarChanged);
+	cvWeeklyRestartDay.AddChangeHook(OnCvarChanged);
 	cvWeeklyRestartTime.AddChangeHook(OnCvarChanged);
 	cvWeeklyRestartType.AddChangeHook(OnCvarChanged);
 	cvWeeklyRestartIgnorePlayers.AddChangeHook(OnCvarChanged);
@@ -187,7 +193,10 @@ public int OnCvarChanged(ConVar cvar, const char[] oldValue, const char[] newVal
 	
 	if (cvar == cvWeeklyRestartWait)
 		g_iWeeklyRestartWait = cvWeeklyRestartWait.IntValue;
-	
+		
+	if (cvar == cvWeeklyRestartDay)
+		cvWeeklyRestartDay.GetString(g_sDailyRestartTime, sizeof(g_sDailyRestartTime));
+		
 	if (cvar == cvWeeklyRestartTime)
 	{
 		cvWeeklyRestartTime.GetString(g_sWeeklyRestartTime, sizeof(g_sWeeklyRestartTime));
@@ -281,37 +290,43 @@ public Action Timer_WeeklyRestart(Handle hTimer)
 		FormatTime(sTime, sizeof(sTime), "%w");
 		
 		int iTime;
-		
 		// convert the convar string into int for comparison
-		if (StrEqual(g_sWeeklyRestartTime, "sun"))
+		if (StrEqual(g_sWeeklyRestartDay, "sun"))
 			iTime = 0;
 			
-		if (StrEqual(g_sWeeklyRestartTime, "mon"))
+		if (StrEqual(g_sWeeklyRestartDay, "mon"))
 			iTime = 1;
 			
-		if (StrEqual(g_sWeeklyRestartTime, "tue"))
+		if (StrEqual(g_sWeeklyRestartDay, "tue"))
 			iTime = 2;
 			
-		if (StrEqual(g_sWeeklyRestartTime, "wed"))
+		if (StrEqual(g_sWeeklyRestartDay, "wed"))
 			iTime = 3;
 			
-		if (StrEqual(g_sWeeklyRestartTime, "thu"))
+		if (StrEqual(g_sWeeklyRestartDay, "thu"))
 			iTime = 4;
 			
-		if (StrEqual(g_sWeeklyRestartTime, "fri"))
+		if (StrEqual(g_sWeeklyRestartDay, "fri"))
 			iTime = 5;
 			
-		if (StrEqual(g_sWeeklyRestartTime, "sat"))
+		if (StrEqual(g_sWeeklyRestartDay, "sat"))
 			iTime = 6;
 			
-		// check the weekly restart time
+		// check the weekly restart day
 		if (StringToInt(sTime) == iTime)
 		{
-			// if there is nobody in the server or it should be ignored
-			if (GetConnectedPlayerCount() == 0 || g_iWeeklyRestartIgnorePlayers == 1)
+			// get the current minute
+			FormatTime(sTime, sizeof(sTime), "%M");
+			
+			// check the weekly restart hour time
+			if (StrEqual(sTime, g_sWeeklyRestartTime))
 			{
-				// restart
-				ExecuteRestart(g_iWeeklyRestartType, g_iWeeklyRestartWait);
+				// if there is nobody in the server or it should be ignored
+				if (GetConnectedPlayerCount() == 0 || g_iWeeklyRestartIgnorePlayers == 1)
+				{
+					// restart
+					ExecuteRestart(g_iWeeklyRestartType, g_iWeeklyRestartWait);
+				}
 			}
 		}
 	}
