@@ -35,6 +35,12 @@ The server refresh module of Titan. All inclusive server restart features in one
 
 3. All time ConVars are string
 
+| ConVar               | Description                                                    | Default Value                                   | 0 = ? | 1 = ? | Minimum Value | Max Value |
+|----------------------|----------------------------------------------------------------|-------------------------------------------------|-------|-------|---------------|-----------|
+| `sm_restart_message` | Change the message that appears before the server is restarted | "The server will be restarting in {0} seconds." |       |       |               |           |
+|                      |                                                                |                                                 |       |       |               |           |
+|                      |                                                                |                                                 |       |       |               |           |
+
 - `sm_restart_message` - Change the message that appears before the server is restarted
   - Default: "The server will be restarting in {0} seconds."
   
