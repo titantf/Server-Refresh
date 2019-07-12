@@ -28,10 +28,7 @@ The server refresh module of Titan. All inclusive server restart features in one
   
 ### ConVars
 ---
-#### Notes
-1. The wait time ConVars are completely useless if you ignore player counts
-2. All child ConVars are ignored if the module is not enabled in the first place
-3. All time ConVars are string
+Please note that all time ConVars are in string.
 
 | ConVar | Description | Default Value | 0 = | 1 = | Minimum Value | Max Value |
 |-----------------------------------|-----------------------------------------------------------------------------------|-------------------------------------------------|-------|--------|---------------|-----------|
