@@ -87,7 +87,7 @@ public void OnPluginStart()
 	cvDailyRestartWait = CreateConVar("sm_restart_daily_wait", "30", "The amount of time to wait after an daily restart is here in seconds (Default = 30)");
 	g_iDailyRestartWait = cvDailyRestartWait.IntValue;
 	
-	cvDailyRestartTime = CreateConVar("sm_restart_daily_time", "0500", "At what hour and minute should the restart happen in 4 digits (Minimum = 0000, Maximum = 2459, Default = 0500)");
+	cvDailyRestartTime = CreateConVar("sm_restart_daily_time", "0500", "At what hour and minute should the restart happen in 4 digits (Minimum = 0000, Maximum = 2359, Default = 0500)");
 	cvDailyRestartTime.GetString(g_sDailyRestartTime, sizeof(g_sDailyRestartTime));
 	
 	cvDailyRestartType = CreateConVar("sm_restart_daily_type", "0", "The type of restart done daily (0 = Map, 1 = Server, Default = 0)", _, true, 0.0, true, 1.0);
@@ -106,7 +106,7 @@ public void OnPluginStart()
 	cvWeeklyRestartDay.GetString(g_sWeeklyRestartDay, sizeof(g_sWeeklyRestartDay));
 	strcopy(g_sWeeklyRestartDay, sizeof(g_sWeeklyRestartDay), StringToLower(g_sWeeklyRestartDay));
 	
-	cvWeeklyRestartTime = CreateConVar("sm_restart_weekly_time", "0500", "At what hour and minute should the restart happen in 4 digits (Minimum = 0000, Maximum = 2459, Default = 0500)");
+	cvWeeklyRestartTime = CreateConVar("sm_restart_weekly_time", "0500", "At what hour and minute should the restart happen in 4 digits (Minimum = 0000, Maximum = 2359, Default = 0500)");
 	cvWeeklyRestartTime.GetString(g_sWeeklyRestartTime, sizeof(g_sWeeklyRestartTime));
 	
 	cvWeeklyRestartType = CreateConVar("sm_restart_weekly_type", "1", "The type of restart done weekly (0 = Map, 1 = Server, Default = 1)", _, true, 0.0, true, 1.0);
