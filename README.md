@@ -33,7 +33,7 @@ The server refresh module of Titan. All inclusive server restart features in one
 2. All child ConVars are ignored if the module is not enabled in the first place
 3. All time ConVars are string
 
-| ConVar | Description | Default Value | 0 = ? | 1 = ? | Minimum Value | Max Value |
+| ConVar | Description | Default Value | 0 = | 1 = | Minimum Value | Max Value |
 |-----------------------------------|-----------------------------------------------------------------------------------|-------------------------------------------------|-------|--------|---------------|-----------|
 | `sm_restart_message` | Change the message that appears before the server is restarted | "The server will be restarting in {0} seconds." |  |  |  |  |
 | `sm_restart_map_message` | Change the message that appears before the map is restarted | "The map will be refresh in {0} seconds." |  |  |  |  |
