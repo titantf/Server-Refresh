@@ -30,90 +30,29 @@ The server refresh module of Titan. All inclusive server restart features in one
 ---
 #### Notes
 1. The wait time ConVars are completely useless if you ignore player counts
-
 2. All child ConVars are ignored if the module is not enabled in the first place
-
 3. All time ConVars are string
 
-| ConVar               | Description                                                    | Default Value                                   | 0 = ? | 1 = ? | Minimum Value | Max Value |
-|----------------------|----------------------------------------------------------------|-------------------------------------------------|-------|-------|---------------|-----------|
-| `sm_restart_message` | Change the message that appears before the server is restarted | "The server will be restarting in {0} seconds." |       |       |               |           |
-|                      |                                                                |                                                 |       |       |               |           |
-|                      |                                                                |                                                 |       |       |               |           |
-
-- `sm_restart_message` - Change the message that appears before the server is restarted
-  - Default: "The server will be restarting in {0} seconds."
-  
-- `sm_restart_map_message` - Change the message that appears before the map is restarted
-  - Default: "The map will be refresh in {0} seconds."
-  
-- `sm_restart_empty` - Enable restart when empty
-  - 0 = No; 1 = Yes
-  - Default: 1
-  
-- `sm_restart_empty_wait` - The amount of time to wait after a server is emptied before restarting in seconds
-  - Default: 30
-  
-- `sm_restart_empty_type` - The type of restart when empty
-  - 0 = Map; 1 = Server
-  - Default: 0
-  
-- `sm_restart_hourly` - Enable hourly restart
-  - 0 = No; 1 = Yes
-  - Default: 1
-  
-- `sm_restart_hourly_wait` - The amount of time to wait after an hourly restart is here in seconds
-  - Default: 30
-  
-- `sm_restart_hourly_time` - At what minute should the restart happen in 2 digits
-  - Minimum = 00; Maximum = 60
-  - Default: "00"
-  
-- `sm_restart_hourly_type` - The type of restart done hourly
-  - 0 = Map; 1 = Server
-  - Default: 0
-  
-- `sm_restart_hourly_ignoreplayers` - Ignore players on hourly restart
-  - 0 = No; 1 = Yes
-  - Default: 0
-  
-- `sm_restart_daily` - Enable daily restart
-  - 0 = No; 1 = Yes
-  - Default: 1
-  
-- `sm_restart_daily_wait` - The amount of time to wait after an daily restart is here in seconds
-  - Default: 30
-  
-- `sm_restart_daily_time` - At what hour and minute should the restart happen in 4 digits
-  - Minimum = 0000; Maximum = 2459
-  - Default: "0500"
-  
-- `sm_restart_daily_type` - The type of restart done daily
-  - 0 = Map; 1 = Server
-  - Default: 0
-  
-- `sm_restart_daily_ignoreplayers` - Ignore players on daily restart
-  - 0 = No; 1 = Yes
-  - Default: 0
-  
-- `sm_restart_weekly` - Enable weekly restart
-  - 0 = No; 1 = Yes
-  - Default: 1
-  
-- `sm_restart_weekly_wait` - The amount of time to wait after an weekly restart is here in seconds
-  - Default: 30
-  
-- `sm_restart_weekly_day` - On which day should the restart happen in 3 letters
-  - Default: "sun"
-  
-- `sm_restart_weekly_time` - At what hour and minute should the restart happen in 4 digits
-  - Minimum = 0000; Maximum = 2459
-  - Default: "0500"
-  
-- `sm_restart_weekly_type` - The type of restart done weekly
-  - 0 = Map; 1 = Server
-  - Default: 1
-  
-- `sm_restart_weekly_ignoreplayers` - Ignore players on weekly restart
-  - 0 = No; 1 = Yes
-  - Default: 0
+| ConVar | Description | Default Value | 0 = ? | 1 = ? | Minimum Value | Max Value |
+|-----------------------------------|-----------------------------------------------------------------------------------|-------------------------------------------------|-------|--------|---------------|-----------|
+| `sm_restart_message` | Change the message that appears before the server is restarted | "The server will be restarting in {0} seconds." |  |  |  |  |
+| `sm_restart_map_message` | Change the message that appears before the map is restarted | "The map will be refresh in {0} seconds." |  |  |  |  |
+| `sm_restart_empty` | Enable restart when empty | 1 | No | Yes |  |  |
+| `sm_restart_empty_wait` | The amount of time to wait after a server is emptied before restarting in seconds | 30 |  |  |  |  |
+| `sm_restart_empty_type` | The type of restart when empty | 0 | Map | Server |  |  |
+| `sm_restart_hourly` | Enable hourly restart | 1 | No | Yes |  |  |
+| `sm_restart_hourly_wait` | The amount of time to wait after an hourly restart is here in seconds | 30 |  |  |  |  |
+| `sm_restart_hourly_time` | At what minute should the restart happen in 2 digits | "00" |  |  | 00 | 60 |
+| `sm_restart_hourly_type` | The type of restart done hourly | 0 | Map | Server |  |  |
+| `sm_restart_hourly_ignoreplayers` | Ignore players on hourly restart | 0 | No | Yes |  |  |
+| `sm_restart_daily` | Enable daily restart | 1 | No | Yes |  |  |
+| `sm_restart_daily_wait` | The amount of time to wait after an daily restart is here in seconds | 30 |  |  |  |  |
+| `sm_restart_daily_time` | At what hour and minute should the restart happen in 4 digits | "0500" |  |  | "0000" | "2359" |
+| `sm_restart_daily_type` | The type of restart done daily | 0 | Map | Server |  |  |
+| `sm_restart_daily_ignoreplayers` | Ignore players on daily restart | 0 | No | Yes |  |  |
+| `sm_restart_weekly` | Enable weekly restart | 0 | No | Yes |  |  |
+| `sm_restart_weekly_wait` | The amount of time to wait after an weekly restart is here in seconds | 30 |  |  |  |  |
+| `sm_restart_weekly_day` | On which day should the restart happen in 3 letters | "sun" |  |  |  |  |
+| `sm_restart_weekly_time` | At what hour and minute should the restart happen in 4 digits | "0500" |  |  | "0000" | "2359" |
+| `sm_restart_weekly_type` | The type of restart done weekly | 1 | Map | Server |  |  |
+| `sm_restart_weekly_ignoreplayers` | Ignore players on weekly restart | 0 | No | Yes |  |  |
